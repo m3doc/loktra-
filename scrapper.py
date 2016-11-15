@@ -9,7 +9,8 @@ keyword = args[1]
 
 def getNumber(text):
     soup = BeautifulSoup(text)
-    value= soup.findAll("span", {"class": "numTotalResults"})[0].string[:-6]
+    value= soup.findAll("span", {"class": "numTotalResults"})[0].string
+    value = value.replace("&#43;","+")
     value = re.sub('.*of\s', '', value)
     return value
 
